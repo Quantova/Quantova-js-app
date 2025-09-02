@@ -2149,6 +2149,7 @@ __metadata:
     "@polkadot/x-fetch": "npm:^13.5.6"
     "@polkadot/x-ws": "npm:^13.5.6"
     "@polymeshassociation/polymesh-types": "npm:5.7.0"
+    "@quantova-network/types-bundle": "npm:^1.1.2"
     "@snowfork/snowbridge-types": "npm:0.2.7"
     "@sora-substrate/type-definitions": "npm:1.27.7"
     "@subsocial/definitions": "npm:0.8.14"
@@ -3041,6 +3042,25 @@ __metadata:
   version: 5.7.0
   resolution: "@polymeshassociation/polymesh-types@npm:5.7.0"
   checksum: 10/7beefbe20ceb896a739e12241af8ac02245af0bc7383b7c36bcbd019d559eae2bcc27f06034f7845989674568a7fc2cd3b16793d2cd1499cbd5cf681ac088799
+  languageName: node
+  linkType: hard
+
+"@quantova-network/types-bundle@npm:^1.1.1, @quantova-network/types-bundle@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@quantova-network/types-bundle@npm:1.1.2"
+  dependencies:
+    "@biomejs/biome": "npm:*"
+    "@polkadot/api": "npm:*"
+    "@polkadot/api-base": "npm:*"
+    "@polkadot/rpc-core": "npm:*"
+    "@polkadot/typegen": "npm:*"
+    "@polkadot/types": "npm:^16.1.2"
+    "@polkadot/types-codec": "npm:*"
+    "@polkadot/util-crypto": "npm:^13.5.1"
+    js-sha3: "npm:^0.9.3"
+    tsup: "npm:*"
+    typescript: "npm:*"
+  checksum: 10/8c93e483cb43dc0717f849e393629c5c64afed381ae840a9c122cec227d7d734ebfff7550b2f35ddc85521a58c8058a7a3db326ba5200b6463edfe4ced938bce
   languageName: node
   linkType: hard
 
@@ -11802,6 +11822,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"js-sha3@npm:^0.9.3":
+  version: 0.9.3
+  resolution: "js-sha3@npm:0.9.3"
+  checksum: 10/8daacb93b18609a0dc081f2f6199b80a96df36f9975b4b9c7476ae92822e07100b9e1969fc76f4b58e703cd6175f0de7656a99cbb2335cfb554c66f988fbead5
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -14310,6 +14337,7 @@ __metadata:
     "@crustio/crust-pin": "npm:^1.0.0"
     "@pinata/sdk": "npm:^1.2.1"
     "@polkadot/dev": "npm:^0.83.3"
+    "@quantova-network/types-bundle": "npm:^1.1.1"
     "@types/chart.js": "npm:^2.9.41"
     "@types/file-saver": "npm:^2.0.7"
     "@types/react-beautiful-dnd": "npm:^13.1.7"
@@ -14325,6 +14353,7 @@ __metadata:
     electron-builder-notarize: "npm:^1.5.1"
     extensionless: "npm:^1.9.6"
     i18next-scanner: "npm:^4.4.0"
+    js-sha3: "npm:^0.9.3"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-is: "npm:^18.2.0"

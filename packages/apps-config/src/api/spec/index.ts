@@ -142,6 +142,8 @@ import zCloak from './zCloak.js';
 import zeitgeist from './zeitgeist.js';
 import zenlink from './zenlink.js';
 import zero from './zero.js';
+import quantova from './quantova.js';
+
 
 // NOTE: The mapping is done from specName in state.getRuntimeVersion
 const spec: Record<string, OverrideBundleDefinition> = {
@@ -281,6 +283,7 @@ const spec: Record<string, OverrideBundleDefinition> = {
   'quantum-portal-network-parachain': ferrum,
   quartz,
   realis,
+  quantova,
   'riochain-runtime': riochain,
   robonomics,
   root: rootnet,

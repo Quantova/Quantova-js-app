@@ -26,6 +26,8 @@ import { settings } from '@polkadot/ui-settings';
 import { formatBalance, isNumber, isTestChain, objectSpread, stringify } from '@polkadot/util';
 import { defaults as addressDefaults } from '@polkadot/util-crypto/address/defaults';
 
+import { typesBundle as quantovaTypesBundle } from '@quantova-network/types-bundle';
+
 import { lightSpecs, relaySpecs } from './light/index.js';
 import { statics } from './statics.js';
 import { decodeUrlTypes } from './urlTypes.js';
@@ -35,7 +37,6 @@ interface Props {
   apiUrl: string;
   isElectron: boolean;
   store?: KeyringStore;
-  beforeApiInit?: React.ReactNode
 }
 
 interface ChainData {
@@ -269,12 +270,14 @@ async function createApi (apiUrl: string, signer: ApiSigner, isLocalFork: boolea
       provider = new WsProvider(apiUrl);
     }
 
+    console.log("hello-typebundle",  statics.registry);
     statics.api = new ApiPromise({
       provider,
       registry: statics.registry,
       signer,
       types,
-      typesBundle
+      typesBundle,
+      hasher: quantovaTypesBundle.spec?.quantova?.hasher
     });
 
     // See https://github.com/polkadot-js/api/pull/4672#issuecomment-1078843960
@@ -288,14 +291,14 @@ async function createApi (apiUrl: string, signer: ApiSigner, isLocalFork: boolea
   return { fork: chopsticksFork, types };
 }
 
-export function ApiCtxRoot ({ apiUrl, beforeApiInit, children, isElectron, store: keyringStore }: Props): React.ReactElement<Props> | null {
+export function ApiCtxRoot ({ apiUrl, children, isElectron, store: keyringStore }: Props): React.ReactElement<Props> | null {
   const { queuePayload, queueSetTxStatus } = useQueue();
   const [state, setState] = useState<ApiState>(EMPTY_STATE);
   const [isApiConnected, setIsApiConnected] = useState(false);
   const [isApiInitialized, setIsApiInitialized] = useState(false);
   const [apiError, setApiError] = useState<null | string>(null);
   const [extensions, setExtensions] = useState<InjectedExtension[] | undefined>();
-  const isLocalFork = useMemo(() => store.get('localFork') === apiUrl, [apiUrl]);
+  const [isLocalFork] = useState(store.get('localFork') === apiUrl);
   const apiEndpoint = useEndpoint(apiUrl);
   const peopleEndpoint = usePeopleEndpoint(apiEndpoint?.relayName || apiEndpoint?.info);
   const coreTimeEndpoint = useCoretimeEndpoint(apiEndpoint?.relayName || apiEndpoint?.info);
@@ -374,7 +377,7 @@ export function ApiCtxRoot ({ apiUrl, beforeApiInit, children, isElectron, store
   }, [apiEndpoint, apiUrl, queuePayload, queueSetTxStatus, keyringStore, isLocalFork]);
 
   if (!value.isApiInitialized) {
-    return <>{beforeApiInit}</>;
+    return null;
   }
 
   return (
