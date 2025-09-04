@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="manifest.json">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>Polkadot/Substrate Portal</title>
+    <script type="text/javascript" src="env-config.js"></script>
+    <style>
+      :root {
+        --font-mono: 0.889em Consolas, monaco, "Ubuntu Mono", "Liberation Mono", "Courier New", Courier, monospace;
+        --font-sans: 1em "-apple-system", BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+        /*
+          From https://www.modularscale.com/?1&rem&1.125 and https://type-scale.com/ -
+          1.125 (8:9) factor: 1.424rem, 1.266rem, 1.125rem, 1rem, 0.889rem, 0.79rem
+        */
+        --font-percent-small: 88.9%;
+        --font-percent-tiny: 79.0%;
+        --font-size-base: 1rem;
+        --font-size-h1: 1.424rem;
+        --font-size-h2: 1.266rem;
+        --font-size-h3: 1.125rem;
+        --font-size-small: 0.889rem;
+        --font-size-tiny: 0.79rem;
+
+        --font-weight-bold: 600; /* semi */
+        --font-weight-light: 200;
+        --font-weight-normal: 400;
+
+        --opacity-light: 0.6;
+
+        --width-full: 1750px;
+        --width-half: 875px;
+        --width-shortaddr: 6.5em;
+        --width-shorthash: 9em;
+
+        --font-weight-header: var(--font-weight-normal);
+        --font-size-label: var(--font-size-small);
+        --font-weight-label: var(--font-weight-bold);
+        --text-transform-label: lowercase;
+
+        --bg-menu-hover: rgba(255, 255, 255, 0.2);
+      }
+
+      [data-theme="dark"] {
+        --bg-identicon-circle: #282829;
+        --bg-input: #38393f;
+        --bg-input-error: #48393f;
+        --bg-inverse: rgba(78, 78, 78, 0.66);
+        --bg-menu: #26272c;
+        --bg-page: #26272c;
+        --bg-table: #3b3d3f;
+        --bg-tabs: #38393f;
+        --bg-toggle: #58595f;
+        --bg-sidebar: #1a1b20;
+        --bg-static-extra: rgba(200, 200, 200, 0.1);
+        --border-identicon: transparent;
+        --border-input: rgba(234, 236, 238, .15);
+        --border-table: #343536;
+        --border-tabs: #343536;
+        --color-bounty-info: #8E8E8E;
+        --color-checkbox: rgba(78, 78, 78, 0.66);
+        --color-error: rgba(255, 83, 83, 0.8);
+        /* --color-header: rgba(244, 242, 240, 0.8); */
+        /* --color-label: rgba(244, 242, 240, 0.45); */
+        /* --color-summary: rgba(244, 242, 240, 0.75); */
+        /* --color-table-foot: rgba(254, 240, 240, 0.66); */
+        /* --color-table-head: rgba(254, 240, 240, 0.8); */
+        --color-text: rgba(244, 242, 240, 0.8);
+        --opacity-gray: 0.1;
+      }
+
+      [data-theme="light"] {
+        --bg-identicon-circle: #eee;
+        --bg-input: #ffffff;
+        --bg-input-error: #fff6f6;
+        --bg-inverse: rgba(244, 242, 240, 0.91);
+        --bg-menu: #ffffff;
+        --bg-page: #f5f3f1;
+        --bg-table: #ffffff;
+        --bg-tabs: #ffffff;
+        --bg-toggle: #e4e5e6;
+        --bg-sidebar: #fafafa;
+        --bg-static-extra: rgba(200, 200, 200, 0.1);
+        --border-identicon: #ddd;
+        --border-input: rgba(34, 36, 38, .15);
+        --border-table: #efedeb;
+        --border-tabs: #f1efed;
+        --color-bounty-info: #4D4D4D;
+        --color-checkbox: rgba(34, 36, 38, 0.15);
+        --color-error: rgba(139, 0, 0);
+        /* --color-header: rgba(78, 78, 78, 0.8); */
+        /* --color-label: rgba(78, 78, 78, 0.66); */
+        /* --color-summary: rgba(78, 78, 78, 0.66); */
+        /* --color-table-foot: rgba(78, 78, 78, 0.66); */
+        /* --color-table-head: rgba(78, 78, 78, 0.8); */
+        --color-text: rgba(78, 78, 78, 0.8); /* 1 */
+        --opacity-gray: 0.75;
+      }
+
+      .--absolute {
+        position: absolute;
+      }
+
+      .--digits {
+        font-variant-numeric: tabular-nums;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      .--hidden {
+        display: none;
+      }
+
+      .--relative {
+        position: relative;
+      }
+
+      .--tmp {
+        background: grey;
+        filter: blur(2px);
+        opacity: 0.15;
+      }
+    </style>
+  <script defer src="load.23b21e3ef8a4a42b.js" integrity="sha384-dEk9eYc5lOqKCsEnPeTHeXqop2L5XhttY6QW/dyuEYYNYUqYKXP6ntgNe+e1ZIM0" crossorigin="anonymous"></script><script defer src="type.bcf59ec0183bbbb2.js" integrity="sha384-TlqDhkRhJ9XhhxNMUUjYFY/YvsBFNFNEXru9d/WGZ7hM0eh92pF9VNoVJoQGC5et" crossorigin="anonymous"></script><script defer src="logo.aa006d63096d27b1.js" integrity="sha384-+jj7dWcmXIERJhLStXr7X8gZfqBXO0X2Vl66QxDJpyc7ja9VZwrUHK3ySf6gQQAU" crossorigin="anonymous"></script><script defer src="logo.131525c9756cf029.js" integrity="sha384-x+IfbzkBMZIPXIo/H3i32FtYXQpfi0fgj40cXmffkOUmGTy1F3jjK5G2CInjgWaH" crossorigin="anonymous"></script><script defer src="logo.d2d053dd5d49253e.js" integrity="sha384-Ki+ygcyEv3kC5rZ/ckLWhA01TiA1G+p6Nu6EwN4CRZ3O9k2RW7vXvuwPheICv5ud" crossorigin="anonymous"></script><script defer src="conf.7860db8b79f60948.js" integrity="sha384-ZHonW8g89aaGLZ7x4xCu3YE1DHjK2SO79yAk+/bB1Dpec/BBxk9ZHleBzd+56lDt" crossorigin="anonymous"></script><script defer src="robo.68e2f31f17071665.js" integrity="sha384-L2PE+TDhxcGeotPS++PLNCAQhFv1D/yuyWF/1oa5obLCCUy8osZSyvzvbBLGHbJX" crossorigin="anonymous"></script><script defer src="robo.027b2a7c3e2c7839.js" integrity="sha384-tHfp37OWam0VOM4FQgdVm8tkd5FSw09Ixlrgt2IRZmqAM+j+8aR0MF4MCjWKq3If" crossorigin="anonymous"></script><script defer src="robo.f0c5655038e0ca4e.js" integrity="sha384-ehdAKbfQm2GCSzc9GyRjDTmWMJaKn+WVVJgOBTjAilHKpuAo7BdAzW01WflecD/L" crossorigin="anonymous"></script><script defer src="robo.a7202a3a88550995.js" integrity="sha384-m3eVmcCuey57W7gosac5OWhXMReYCSGNyoshhxi1aMooEQeGfZEddCZvNS3phAvl" crossorigin="anonymous"></script><script defer src="robo.49ac746d7f9e49d1.js" integrity="sha384-E839H8OSvLY65keD1Ip6ypf6D/5rYhxneZKo62tpOyIIUsegdQEtlu8wIr5lSeJ1" crossorigin="anonymous"></script><script defer src="robo.7a1eaa085174144f.js" integrity="sha384-0tlkYCZ8F9G8hix8wEZkeanoOPdQoHQEQZM/MuVG7fOjRRScj67Of8Gv0nRZeWzM" crossorigin="anonymous"></script><script defer src="robo.26ea65a58c3a82f0.js" integrity="sha384-mWNxFVZnja/46kbMIGbvnD8KGBMB1fQyBy/8bG1hz/9/2RAWiMjZpZmpPLar/GH+" crossorigin="anonymous"></script><script defer src="robo.4b4809fd9aa1ec5a.js" integrity="sha384-XWI5uVRJaJqUp6ywpXvoUZih5CgytCPriDdSL6jeBzNbEqAogZlmVxJyxncDvSkY" crossorigin="anonymous"></script><script defer src="robo.c738ea91f5ff9da4.js" integrity="sha384-K35n8i3y6Pvc92buuAiHvaqIrCcxiRKaFbwQYCezURpJnjGiPy6rCoXYz/Oy94dj" crossorigin="anonymous"></script><script defer src="robo.b64233aeea54327e.js" integrity="sha384-Egjs9EusYadnt4/GivmuYRbkeUUKo1sj2BV78+Hd6Khodmfs2hqmJMOLFPrY7+oT" crossorigin="anonymous"></script><script defer src="robo.8d82df2e4fe33944.js" integrity="sha384-ZoR7NRs9MrLypiJhoHEVyOuqRo8UKZcrFrmCW4iPZHyCmwhnU227yznnSW7tY679" crossorigin="anonymous"></script><script defer src="robo.6cf37b5d9c812bed.js" integrity="sha384-7Px4UtytLRQmS9yyF7i58Qe2SF/TfaCQhPBLGnWemjAqkDyUWPR7jT/YmaCyFWmU" crossorigin="anonymous"></script><script defer src="robo.bbb3883d2c1e796d.js" integrity="sha384-bxx+98zPLRliLHrBSkloOJL5VZG+Y7do864i9/RRGZD2Xd/wbzvhPy7N4eH5REkg" crossorigin="anonymous"></script><script defer src="robo.0aee31325856e451.js" integrity="sha384-A7S/u59D42AKKH7oHwPjeBf+NuzIeG6AQnxxOnJbLXo69IbwCj6kePfnFyqK3100" crossorigin="anonymous"></script><script defer src="robo.17371790a66cb7d5.js" integrity="sha384-gSxETIyneF0Y2bYE7QJxEx/d9Gud3RxxsrlBOXDKCt8+yEyKd/iBLliUJKWNg2UK" crossorigin="anonymous"></script><script defer src="robo.fe7f745ac9aadd07.js" integrity="sha384-gl3wKGHriZ/2VoMoKlhLNkQPrX1W5uVyKmdBn16cwf8/ShHs9ZOP33Y4rYuqjm7U" crossorigin="anonymous"></script><script defer src="robo.479734b0a803cd34.js" integrity="sha384-nShAfTRDCgW9qzadWmqGcSsGf2IWIsWLLnBKbhiNGTWqI9tGHLlzo3uFfHPTLes+" crossorigin="anonymous"></script><script defer src="robo.f636afdb6ac00b7d.js" integrity="sha384-JiQUrUu1CFQ4M98w9SqRGfdVKTkYZ972dJ9X9sOT/cSS5zyG3hW9jxYeFGs+wD/g" crossorigin="anonymous"></script><script defer src="robo.c2506440e5e666bb.js" integrity="sha384-BI1TRWH7PEnqzxEzSePVw5+FLdAQ7ydDtivUqG/zhNQVA4r5PpTdfpEp1fz6V8Lf" crossorigin="anonymous"></script><script defer src="robo.a10813f78f33464c.js" integrity="sha384-Bdh134OUnpi7NSOxsc4RFx0HCnXPXWcTeZuH+OrTY8MZNOm9l2WgePyYwg+rp8SP" crossorigin="anonymous"></script><script defer src="comm.139ae0f2f49adbc4.js" integrity="sha384-2f07OOTcuEbfT3pKobi7znaDj3JFR+KES6bO6PKoo12gWOChNGb+soiZtXNhnisb" crossorigin="anonymous"></script><script defer src="page.03b01548c099e15d.js" integrity="sha384-fzHo3cIBhJ1JtziLRwy4fRPgZgROsBALJenGHr+hhYkezK0sBJfAy83S78B1zaLo" crossorigin="anonymous"></script><script defer src="page.763e4dd2a0316380.js" integrity="sha384-82VHhv1onoC2ayLdutreDU2Zs3PVOumTgS16yLivZX2yDW1Suwc1t45pCbjPctel" crossorigin="anonymous"></script><script defer src="modu.50ae9cbc840c42fa.js" integrity="sha384-J/3FjOSM8n9AlaSoNGOXgjfImSTLhuV+s7iyTTnfZvl65u62yw0NFmIhThLPTMD3" crossorigin="anonymous"></script><script defer src="modu.c15cc50695934c86.js" integrity="sha384-peEZGGq+zGGpHVasW5MlW5IQO/J2/VCCzjZfpUGKJ/aF6mO+AEQPd5Haorhh/BnW" crossorigin="anonymous"></script><script defer src="modu.fca3568a4c29e6cd.js" integrity="sha384-9lqo9Gj2HE9xlCUJc3ZAi1YIK9Bmswkge7GBlG6pFFwdJbQQd6NUp748Femp/e6l" crossorigin="anonymous"></script><script defer src="modu.bccc2d589ce284fc.js" integrity="sha384-/A93QAkNDBQx2D+k8xOgDhehlcUXh9cZFAf4fnFOoH2sew4ZEjmA071fMIa30RBa" crossorigin="anonymous"></script><script defer src="modu.605bc9373aa3cf5d.js" integrity="sha384-UoRw5ZWBKx6evNDZvaxSZ5n+gsOsBMLt7qM/lxjCKuOIobCB6tkVPPt9IyohT+xZ" crossorigin="anonymous"></script><script defer src="modu.76b315e85899761b.js" integrity="sha384-jOA7QR9hD3nmR0UjT0vCsVV7ptIocR+05rUn+VFLTFIXEdfxSnrF1AIDI76u8cFR" crossorigin="anonymous"></script><script defer src="modu.6109d5c819a37f9f.js" integrity="sha384-HR3F8NDtZxmMoiSgIA5420wWdcQnhWVecwzvDwfgSaBHqLw/0GS72xFcDDzHbw5i" crossorigin="anonymous"></script><script defer src="modu.a2df32a78db459d1.js" integrity="sha384-LXqxuoaySvJl1h6ZvEmG9D/kDxPRN2g0N2OpnOrIZr9tMLLGOvvSkRKrtQCSOjo+" crossorigin="anonymous"></script><script defer src="modu.96332b6f27a7d7b3.js" integrity="sha384-5a1oLWUVsmk9DCxzT6I260Fa/ClKl9/+bLQHq8lX/wz73TPCWH/7VVMA45qlaEMp" crossorigin="anonymous"></script><script defer src="modu.dbd3b9e9b9bf064a.js" integrity="sha384-ObwLmbEyYeON2mxduPLm902oX7b4Fo6I+D4Yy+4MhpQ7w0ji2pSh2nSXYbSaFHww" crossorigin="anonymous"></script><script defer src="modu.c8edaa2964c69f08.js" integrity="sha384-AHBUydDnqCVcF6SUrMr7VChyqi2PK2jLgmxtr2rHG5V8Z2gNldlMDlZcBI/fXqMH" crossorigin="anonymous"></script><script defer src="modu.2f7839653bdfd1cf.js" integrity="sha384-7Rne1INITr8dgIO/XN835Q7ZdTKoOxgg1OEA+ETRHBRREifi2oe4lUgzOYSP8d+d" crossorigin="anonymous"></script><script defer src="modu.35b84b40a4d98244.js" integrity="sha384-Z8XXD5SnyL1dG2mqf2ESyAtX8bk5GPwDsdLhKar+DLIjpX/UYHZCVJ+ppiciUeyF" crossorigin="anonymous"></script><script defer src="modu.60cfd7e6f615865b.js" integrity="sha384-UCJ7WL8mJYkkqDUYQ1V3OwhDRF+0qdb4O1SPySuCN7TkVAfpNcJA+pYX3mGNu2Zw" crossorigin="anonymous"></script><script defer src="modu.ca8d5c50629a30ff.js" integrity="sha384-iYjGN1TD+QJRd1FeJQS0PG83bmelEeX/Op5dmSmreH7Ilp+xQKMt0Vkvfk3TaPD9" crossorigin="anonymous"></script><script defer src="modu.72ecb51700675a54.js" integrity="sha384-btPERh64WU9UyhDh1N4cgyoJ7UFmrj7l6ySJp+ssOgwRtL9ZNJq+/OMvaaC7k6Y5" crossorigin="anonymous"></script><script defer src="modu.8fbd5b115b1480e4.js" integrity="sha384-DWjK5lBIHfVs2zP+NvrddSv7ELcvqr4EUVmRgS2ifBPVX6fIZAfFfFp0g1HktelS" crossorigin="anonymous"></script><script defer src="modu.285b07ad2aa5f7ac.js" integrity="sha384-kSiP5asP2tuR0Y4D+mdRbMn++4iPNpYuOhSH6Hp7pfa3JZQU5BW2eqSvimLhw68z" crossorigin="anonymous"></script><script defer src="modu.8d63e9c9789915d4.js" integrity="sha384-GFd50kDcGtbAuB6WG37ACBISiKziTJAV6VmtwCkpYThxxDhDNTNanhm/GMSM3tDu" crossorigin="anonymous"></script><script defer src="modu.ebb1c7e60b179c44.js" integrity="sha384-GBJbicOALV/PpxEGovXVClUbIOCm9/GEAwf/PX6MAHD8KuY+gcAmvq40CmW5F0J+" crossorigin="anonymous"></script><script defer src="modu.81484f288c1dc149.js" integrity="sha384-eC6UkzMkF7PjWvBTwU200ftfgnzr6k5glii/lLlLcTkAXVDcmMx+o2AMlwN9CqrF" crossorigin="anonymous"></script><script defer src="modu.86dfbefdd61f1f67.js" integrity="sha384-VWWyxomrHw7OpStWXlyZTxumsforYrwCwhgu/yNsYAJKg5pEx+2IuBd70mNGte4n" crossorigin="anonymous"></script><script defer src="modu.5a269da0aed061a9.js" integrity="sha384-AiiLsPuPC341kuMRV78APUAyqCJGVsloEXK3WlJXYdu1fXgDTqBifYMxnwhflPbp" crossorigin="anonymous"></script><script defer src="modu.37d90a232dd681e8.js" integrity="sha384-ze3SGIQpyzVYWF1u63H8rshmxyXujiPZFZLnL/wq2HO+TUUikC3K+j4dJqs4Mcaa" crossorigin="anonymous"></script><script defer src="main.c52497014558573d.js" integrity="sha384-yrOmMYY2DGapsBiOs3qk84NfQu8ck3HIB8I+hWvqYDjX8N/rf94UP/VRnu9lLl9h" crossorigin="anonymous"></script><link href="extr.1beedbf44c61f3d6.css" rel="stylesheet" integrity="sha384-9GU94/gF9yHaxvCaP5AyCObAzJBSWTydJHfWNjU+cFxB49+JPED21ws9KxkOMDTd" crossorigin="anonymous"></head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <div id="tooltips"></div>
+    <script>
+      if (window.self !== window.top) {
+        window.top.location.href = window.location.href;
+      }
+    </script>
+  </body>
+</html>

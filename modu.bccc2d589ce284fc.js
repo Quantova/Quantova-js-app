@@ -1,0 +1,1 @@
+"use strict";(("undefined"!=typeof self?self:this).webpackChunk_polkadot_apps=("undefined"!=typeof self?self:this).webpackChunk_polkadot_apps||[]).push([[9917],{50326:(e,t,p)=>{var s=p(67286)("%Object.getOwnPropertyDescriptor%",!0);if(s)try{s([],"length")}catch(e){s=null}e.exports=s}}]);
